@@ -37,6 +37,28 @@ function CoursePage() {
       "https://miro.medium.com/v2/resize:fit:1400/1*l4rSYDc3iAHiDm79WSJrRA.png",
       link: "/course/javascript",
     },
+    {
+      title: "Node Js",
+      description: "Basic to advance",
+      imageUrl:
+      "https://blog.ekohordan.com/media/nodejs.png",
+      link: "/course/nodejs",
+    },
+    {
+      title: "Express Js",
+      description: "From zero to hero",
+      imageUrl:
+      "https://media.licdn.com/dms/image/D4E12AQEBg943ptCYpg/article-cover_image-shrink_720_1280/0/1686391647921?e=2147483647&v=beta&t=sTfwUvcIfW7Fuby7hMluDfuRJK3HfYMMWc2SyZR7-GA",
+      link: "/course/expressjs",
+    },
+    {
+      title: "MongoDB",
+      description: "From zero to hero",
+      imageUrl:
+      "https://media.licdn.com/dms/image/D4D12AQETgv5fMiYEXA/article-cover_image-shrink_720_1280/0/1677609185621?e=2147483647&v=beta&t=4Hu56lmQmUTtVSMFDKfipqVq9U1jo41sIJpib0lQoCo",
+      link: "/course/mongodb",
+    },
+
   ];
 
   return (

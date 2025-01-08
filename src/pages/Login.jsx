@@ -23,30 +23,49 @@ function Login() {
     }
 
     try {
+      // Authenticate the user using Firebase Authentication
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      // Fetch user data from Firestore
-      const userDocRef = doc(db, "users", user.uid);
+      // Check if email exists in Firestore's "users" collection
+      const userDocRef = doc(db, "users", user.uid); // Assuming Firestore stores user data by UID
       const userDoc = await getDoc(userDocRef);
 
       if (userDoc.exists()) {
         // Save user data to localStorage
         const userData = {
           uid: user.uid,
-          displayName: userDoc.data().name || "User", // Get name from Firestore
+          email: user.email,
+          displayName: userDoc.data().name || "User",
         };
         localStorage.setItem("user", JSON.stringify(userData));
 
         alert("Login successful!");
-        navigate("/");  
+        navigate("/"); // Navigate to the root route for regular users
       } else {
-        console.log("No such user found!");
-        setError("User data not found.");
+        // If email not found in Firestore, treat as admin
+        const adminData = { email: email };
+        localStorage.setItem("admin", JSON.stringify(adminData));
+
+        alert("Admin login detected. Redirecting to Admin Panel.");
+        navigate("/dashboard"); // Navigate to the admin panel route
       }
     } catch (err) {
       console.error("Login error:", err.message);
-      setError("Login failed. Please check your credentials.");
+      localStorage.clear(); // Clear any stored data on error
+      switch (err.code) {
+        case "auth/user-not-found":
+          setError("No user found with this email.");
+          break;
+        case "auth/wrong-password":
+          setError("Incorrect password. Please try again.");
+          break;
+        case "auth/too-many-requests":
+          setError("Too many login attempts. Please try again later.");
+          break;
+        default:
+          setError("Login failed. Please check your credentials.");
+      }
     }
   };
 

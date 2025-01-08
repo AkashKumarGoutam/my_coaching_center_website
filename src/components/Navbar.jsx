@@ -8,14 +8,18 @@ const db = getFirestore(app);
 
 function Navbar() {
   const [user, setUser] = useState(null);
+  const [admin, setAdmin] = useState(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null); // Reference to dropdown menu
   const navigate = useNavigate();
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
+    const storedAdmin = JSON.parse(localStorage.getItem("admin"));
     if (storedUser) {
       setUser(storedUser);
+    } else if (storedAdmin) {
+      setAdmin(storedAdmin);
     }
   }, []);
 
@@ -37,7 +41,9 @@ function Navbar() {
 
   const handleLogout = () => {
     localStorage.removeItem("user");
+    localStorage.removeItem("admin");
     setUser(null);
+    setAdmin(null);
     setIsDropdownOpen(false); // Close dropdown after logout
     alert("Logged out successfully!");
     navigate("/");
@@ -49,28 +55,34 @@ function Navbar() {
 
   return (
     <div className="shadow-lg fixed w-full bg-white z-50">
-      <div className="flex justify-between items-center text-gray-700 px-10 lg:px-20 py-3">
+      <div className="flex justify-between items-center text-gray-700 px-10 lg:px-12 py-3">
         <div>
-          <h1 className="text-xl font-bold">MAG Center</h1>
+          <h1 className="text-xl font-bold">MAG Coaching Center</h1>
           <p className="text-xs text-yellow-500">Make life easy with us</p>
         </div>
         <div className="flex items-center text-lg gap-6 font-semibold">
-          <Link to="/" className="hover:underline hover:text-gray-600 transition duration-300">Home</Link>
-          <Link to="/" className="hover:underline hover:text-gray-600 transition duration-300">PYQ</Link>
-          <Link to="/" className="hover:underline hover:text-gray-600 transition duration-300">Contact</Link>
+         
+          {admin?(<Link to="/dashboard" className="hover:underline hover:text-gray-600 transition duration-300">Admin Dashboard</Link>):(<>
+            <Link to="/" className="hover:underline hover:text-gray-600 transition duration-300">Home</Link>
+          <Link to="/questions_and_answers" className="hover:underline hover:text-gray-600 transition duration-300">Q&A</Link>
+          <Link to="/ask_query" className="hover:underline hover:text-gray-600 transition duration-300">Ask Query</Link>
+          <Link to="/contact" className="hover:underline hover:text-gray-600 transition duration-300">Contact</Link>
+          <Link to="/courses" className="hover:underline hover:text-gray-600 transition duration-300">Courses</Link>
+          </>)}
 
-            <Link to="/courses" className="hover:underline hover:text-gray-600 transition duration-300">Courses</Link>
-      
-          
-          {user ? (
+
+          {user || admin ? (
             <div className="relative">
-              {/* User Logo (can be an avatar or any icon) */}
+              {/* User/Admin Avatar */}
+              
               <button onClick={() => setIsDropdownOpen((prev) => !prev)} className="flex items-center gap-2 cursor-pointer">
-                <span className="text-indigo-500">{user.displayName || "User"}</span>
+                <span className="text-indigo-500">
+                  {user?.displayName || admin?.email || "User"}
+                </span>                
                 <img
-                  src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg" // Replace with actual user avatar if available
+                  src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg"
                   alt="User Avatar"
-                  className="w-16 h-16 rounded-full"
+                  className="w-10 h-10 rounded-full"
                 />
               </button>
 

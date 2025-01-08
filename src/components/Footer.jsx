@@ -9,7 +9,7 @@ function Footer() {
         <div>
           <h2 className="text-xl font-semibold text-white mb-4">About Us</h2>
           <p className="text-sm text-gray-400">
-            MAG Center is your go-to platform for skill development, offering a
+            MAG Coaching Center is your go-to platform for skill development, offering a
             wide range of courses to help you succeed in your career. Learn, grow,
             and excel with us!
           </p>
