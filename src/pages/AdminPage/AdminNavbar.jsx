@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 function AdminNavbar() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
 //   const handleLogout = () => {
 //     // Clear the admin data from localStorage
@@ -13,9 +13,9 @@ function AdminNavbar() {
 //   };
 
   return (
-    <div className="mt-16">
-      <div className="flex justify-between bg-indigo-600 p-4 text-gray-100">
-        <div className="flex gap-3">
+    <div className="mt-16 ">
+      <div className="flex w-full fixed justify-between bg-indigo-600 p-4 text-gray-100">
+        <div className="flex gap-3 ">
           <h1 className="text-xl font-semibold underline">Admin Panel</h1>
           {/* <button
             onClick={handleLogout}
@@ -34,7 +34,7 @@ function AdminNavbar() {
           <Link to="/add_courses_topic" className="hover:underline">
             Add Course Topic
           </Link>
-          <Link to="/add_courses_video" className="hover:underline">
+          <Link to="/add_courses_video_page" className="hover:underline">
             Add Course Video
           </Link>
         </div>

@@ -34,7 +34,7 @@ function Footer() {
             </li>
             <li>
               <Link
-                to="/about"
+                to="/ask_"
                 className="hover:text-white transition duration-300"
               >
                 About Us

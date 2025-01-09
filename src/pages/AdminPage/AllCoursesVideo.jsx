@@ -35,15 +35,15 @@ function AllCoursesVideo() {
   return (
     <div>
       <AdminNavbar />
-      <h1 className="text-xl font-semibold underline p-4">All Courses Video</h1>
+      <h1 className="text-xl font-semibold underline p-4 pt-20">All Courses Video</h1>
       <div className="flex justify-center items-center">
       {loading ? (
         <p className="text-center text-gray-500">Loading courses...</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
           {courses.map((course) => (
-            <Link to="/particuler_courses_video" key={course.id}>
-              <div className="border-2 border-indigo-500 w-80 p-1 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <Link to={`/particuler_courses_video/${course.id}`} key={course.id}>
+            <div className="border-2 border-indigo-500 w-80 p-1 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
                 <img
                   src={course.imageURL || "https://via.placeholder.com/150"}
                   alt={`${course.title} course`}
