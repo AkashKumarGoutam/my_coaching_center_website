@@ -51,7 +51,7 @@ function AddCoursesTopic() {
         <>
         <AdminNavbar/>
         
-        <div className="flex lg:py-12 flex-col items-center px-4 mt-32">
+        <div className="flex py-12 flex-col items-center px-4 mt-32">
             {/* Form Section */}
             <div className="flex flex-col border-2 border-gray-300 rounded-xl py-6 px-8 w-full lg:max-w-lg">
                 <h1 className="text-2xl font-semibold text-center underline mb-6 text-indigo-500">

@@ -60,7 +60,7 @@ function ParticulerCoursesvideo() {
   return (
     <div>
       <AdminNavbar />
-      <div className="py-32">
+      <div className="py-20">
         <div>
           <h1 className="flex justify-center text-3xl py-3 font-semibold">
             {title} Syllabus
@@ -74,16 +74,18 @@ function ParticulerCoursesvideo() {
               <h1 className="font-semibold">{videos.length} video tutorials</h1>
             </div>
           </div>
-          <h1 className="flex justify-center text-xl py-3 font-semibold">
+          <div className="flex justify-center bg-red-200">
+          <h1 className=" lg:text-xl text-sm py-3 px-3 lg:px-0 font-semibold">
             After completing the training, you can also download videos for future reference
           </h1>
+          </div>
         </div>
         <div className="flex justify-center py-6">
-          <div className="border w-[50%] rounded-xl p-2">
+          <div className="border lg:w-[50%] rounded-xl p-2">
             {videos.map((video, index) => (
               <div key={index} className="my-4 px-6">
                 <h1 className="text-xl font-semibold py-2">{video.videoName}</h1>
-                <div className="flex justify-between items-center">
+                <div className="lg:flex justify-between items-center">
                   <div className="flex gap-10">
                     <div className="flex gap-2 items-center">
                       <img
@@ -106,7 +108,7 @@ function ParticulerCoursesvideo() {
                   </div>
                   <button
                     onClick={() => handleDelete(index)}
-                    className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-700"
+                    className="bg-red-500 text-white px-4 py-1 my-4 rounded hover:bg-red-700"
                   >
                     Delete
                   </button>

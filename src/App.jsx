@@ -8,13 +8,7 @@ import Register from "./pages/Register";
 import CoursePage from "./pages/CoursePage";
 import UserProfile from "./pages/UserProfile";
 import ScrollToTop from "./components/ScrollToTop";
-// import HtmlCoursePage from "./pages/All Course/HtmlCourse/HtmlCoursePage";
-import CssCoursePage from "./pages/All Course/CssCourse/CssCoursePage";
-import JsCoursePage from "./pages/All Course/JsCourse/JsCoursePage";
-import NodejsCoursePage from "./pages/All Course/NodejsCourse/NodejsCoursePage";
-import ExpressjsCoursePage from "./pages/All Course/ExpressjsCourse/ExpressjsCoursePage";
-import MongoDbCoursePage from "./pages/All Course/MongoDbCourse/MongoDbCoursePage";
-import ProtectedRoute from "./components/ProtectedRoutes";
+import UserProtectedRoute from "./components/UserProtectedRoutes";
 import Dashboard from "./pages/AdminPage/Dashboard";
 import AddCoursesTopic from "./pages/AdminPage/AddCoursesTopic";
 import AddCoursesVideoPage from "./pages/AdminPage/AddCoursesVideoPage";
@@ -22,10 +16,11 @@ import AllCoursesVideo from "./pages/AdminPage/AllCoursesVideo";
 import ParticulerCoursesvideo from "./pages/AdminPage/ParticulerCoursesvideo";
 import QandAPage from "./pages/QandAPage";
 import AskQueryPage from "./pages/AskQueryPage";
-import ContactPage from "./pages/ContactPage";
 import EditCoursesTopic from "./pages/AdminPage/EditCoursesTopic";
 import AddVideo from "./pages/AdminPage/AddVideo";
 import CoursesVideo from "./pages/CoursesVideo";
+import AdminProtectedRoute from "./components/AdminProtectedRoutes";
+import AboutUs from "./pages/AboutUs";
 
 function App() {
   return (
@@ -37,74 +32,90 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/courses" element={<CoursePage />} />
           <Route
-            path="/course/:id"
+            path="/courses"
             element={
-              <ProtectedRoute>
-                <CoursesVideo/>
-              </ProtectedRoute>
+              <UserProtectedRoute>
+                <CoursePage />
+              </UserProtectedRoute>
             }
           />
           <Route
+            path="/course/:id"
+            element={
+              <UserProtectedRoute>
+                <CoursesVideo />
+              </UserProtectedRoute>
+            }
+          />
+          {/* <Route
             path="/course/css"
             element={
-              <ProtectedRoute>
+              <UserProtectedRoute>
                 <CssCoursePage />
-              </ProtectedRoute>
+              </UserProtectedRoute>
             }
           />
           <Route
             path="/course/javascript"
             element={
-              <ProtectedRoute>
+              <UserProtectedRoute>
                 <JsCoursePage />
-              </ProtectedRoute>
+              </UserProtectedRoute>
             }
           />
           <Route
             path="/course/nodejs"
             element={
-              <ProtectedRoute>
+              <UserProtectedRoute>
                 <NodejsCoursePage />
-              </ProtectedRoute>
+              </UserProtectedRoute>
             }
           />
           <Route
             path="/course/expressjs"
             element={
-              <ProtectedRoute>
+              <UserProtectedRoute>
                 <ExpressjsCoursePage />
-              </ProtectedRoute>
+              </UserProtectedRoute>
             }
           />
           <Route
             path="/course/mongodb"
             element={
-              <ProtectedRoute>
+              <UserProtectedRoute>
                 <MongoDbCoursePage />
-              </ProtectedRoute>
+              </UserProtectedRoute>
             }
-          />
+          /> */}
           <Route
             path="/profile"
             element={
-              <ProtectedRoute>
+              <UserProtectedRoute>
                 <UserProfile />
-              </ProtectedRoute>
+              </UserProtectedRoute>
             }
           />
-          <Route path="/questions_and_answers" element={<QandAPage/>}/>
-          <Route path="/ask_query" element={<AskQueryPage/>}/>
-          <Route path="/contact" element={<ContactPage/>}/>
+          <Route path="/questions_and_answers" element={<QandAPage />} />
+          <Route path="/ask_query" element={<AskQueryPage />} />
+          <Route path="/about_us" element={<AboutUs />} />
           {/* admin routes */}
-          <Route path="/dashboard" element={<Dashboard/>}/>
-          <Route path="/add_courses_topic" element={<AddCoursesTopic/>}/>
-          <Route path="/edit_courses_topic/:id" element={<EditCoursesTopic/>} />
-          <Route path="/add_courses_video_page" element={<AddCoursesVideoPage/>}/>
-          <Route path="/add_courses_video/:id" element={<AddVideo/>} />
-          <Route path="/all_courses_video" element={<AllCoursesVideo/>}/>
-          <Route path="/particuler_courses_video/:id" element={<ParticulerCoursesvideo/>}/>
+          <Route path="/dashboard" element={<AdminProtectedRoute><Dashboard /></AdminProtectedRoute>} />
+          <Route path="/add_courses_topic" element={<AdminProtectedRoute><AddCoursesTopic /></AdminProtectedRoute>} />
+          <Route
+            path="/edit_courses_topic/:id"
+            element={<AdminProtectedRoute><EditCoursesTopic /></AdminProtectedRoute>}
+          />
+          <Route
+            path="/add_courses_video_page"
+            element={<AdminProtectedRoute><AddCoursesVideoPage /></AdminProtectedRoute>}
+          />
+          <Route path="/add_courses_video/:id" element={<AdminProtectedRoute><AddVideo /></AdminProtectedRoute>} />
+          <Route path="/all_courses_video" element={<AdminProtectedRoute><AllCoursesVideo /></AdminProtectedRoute>} />
+          <Route
+            path="/particuler_courses_video/:id"
+            element={<AdminProtectedRoute><ParticulerCoursesvideo /></AdminProtectedRoute>}
+          />
         </Routes>
       </div>
       <Footer />

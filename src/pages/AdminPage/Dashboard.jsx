@@ -62,15 +62,15 @@ function Dashboard() {
     <>
       <AdminNavbar />
       <div>
-        <div className="flex justify-between px-12 pt-20 py-4">
+        <div className="lg:flex lg:justify-between lg:px-12 px-10 pt-20 py-4">
           <h1 className="font-semibold py-3 underline">All Courses Topic</h1>
           <div className="flex">
-            <div className="bg-indigo-600 px-2 py-1 text-gray-100 flex justify-center items-center">
+            <div className="bg-indigo-600 px-2 lg:py-1 py-3 text-gray-100 flex justify-center items-center">
               <h1>Search</h1>
             </div>
             <input
               placeholder="Search course topics"
-              className="border border-gray-300 px-2"
+              className="border border-gray-300 lg:px-2"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)} // Update search query
             />

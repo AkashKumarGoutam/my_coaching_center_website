@@ -71,10 +71,10 @@ function Login() {
 
   return (
     <div className="p-10 mt-20 flex justify-center items-center">
-      <div className="p-6 border-2 border-gray-200 rounded-xl">
+      <div className="p-6 lg:border-2 lg:border-gray-200 rounded-xl">
         <h1 className="text-xl font-semibold flex justify-center text-indigo-500 underline pb-6">Login</h1>
         <form onSubmit={handleLogin}>
-          <div className="flex justify-between py-4">
+          <div className="flex justify-between py-4 ">
             <label className="font-semibold text-black w-24">Email:</label>
             <input
               type="email"
