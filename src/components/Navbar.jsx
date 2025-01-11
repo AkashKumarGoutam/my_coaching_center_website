@@ -214,6 +214,10 @@ function Navbar() {
             </button>
             <div className="flex flex-col p-4 gap-4">
               {admin ? (
+                <>
+                <span className="text-indigo-500 text-sm">
+                {admin?.email || "Admin"}
+              </span>
                 <Link
                   to="/dashboard"
                   className="hover:underline text-lg"
@@ -221,8 +225,12 @@ function Navbar() {
                 >
                   Admin Dashboard
                 </Link>
+              </>
               ) : (
                 <>
+                <span className="text-indigo-500">
+                  {user?.displayName || "User"}
+                </span>
                   <Link
                     to="/"
                     className="hover:underline text-lg"
